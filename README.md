@@ -1,4 +1,5 @@
-Chào mọi người! Mình là Võ Như Khoa 👋
+Chào mọi người! 
+Mình là Võ Như Khoa 👋
 Mình là một coder “nghiện” AI và công nghệ mới. Từ lúc tìm hiểu lập trình, mình đã bị cuốn vào thế giới của những thuật toán hóc búa, những mô hình AI phức tạp, và cảm giác thỏa mãn khi biến ý tưởng thành sản phẩm sống động 😎
 
 💻 Dành hàng giờ để code, train mô hình AI, debug (và thỉnh thoảng tạo bug để thử thách bản thân 😅)
