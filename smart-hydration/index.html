@@ -5,18 +5,32 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Smart Hydration – Nền • Cộng • Chỉnh</title>
 <style>
-:root{--b:#0f766e;--b2:#0ea5e9;--ink:#0f172a;--mut:#64748b;--bg:#effcfb;--card:#fff}
-*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:linear-gradient(160deg,#e6fffb,#eff6ff);color:var(--ink)}
-.wrap{max-width:680px;margin:auto;padding:28px 18px 40px}.hero{text-align:center;margin-bottom:20px}.drop{font-size:46px;line-height:1}.hero h1{margin:8px 0 4px;font-size:30px}.hero p{margin:0;color:var(--mut)}
-.card{background:var(--card);border-radius:22px;padding:20px;box-shadow:0 14px 45px #0f766e18;margin-top:16px;border:1px solid #dff7f3}
-label{display:block;font-weight:700;margin:14px 0 7px}.field{display:flex;align-items:center;gap:8px}.field input{width:100%;font-size:18px;padding:14px 15px;border:1px solid #cbd5e1;border-radius:14px;outline:none}.unit{min-width:54px;color:var(--mut);font-weight:700}
-button{width:100%;margin-top:18px;padding:15px;border:0;border-radius:14px;background:linear-gradient(90deg,var(--b),var(--b2));color:#fff;font-size:17px;font-weight:800;cursor:pointer}
-.result{display:none;margin-top:18px;padding:18px;border-radius:18px;background:#ecfeff;text-align:center}.big{font-size:34px;font-weight:900;color:var(--b)}.sub{color:var(--mut);margin-top:4px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}.mini{background:#fff;border:1px solid #cfe8e5;border-radius:14px;padding:12px}.mini b{display:block;font-size:18px;margin-top:4px}
-.flow{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}.step{padding:11px 8px;background:#f8fafc;border-radius:12px;text-align:center;font-size:13px}.step b{display:block;color:var(--b);font-size:14px}
-.note{margin-top:16px;font-size:12.5px;line-height:1.5;color:#64748b}.warn{margin-top:10px;padding:12px;border-radius:12px;background:#fff7ed;color:#9a3412;font-size:12.5px;line-height:1.45}
-footer{text-align:center;color:#64748b;font-size:12px;margin-top:20px}
-@media(max-width:420px){.hero h1{font-size:26px}.grid{grid-template-columns:1fr}.flow{grid-template-columns:1fr}.big{font-size:30px}}
+:root{--blue:#0586c9;--navy:#0b2943;--aqua:#eaf7ff;--line:#cfe7f5;--muted:#5e7184;--bg:#f5fbff;--white:#fff}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:linear-gradient(180deg,#f8fcff,#edf8ff);color:var(--navy)}
+.wrap{max-width:780px;margin:auto;padding:24px 16px 44px}
+.hero{text-align:center;margin:6px 0 18px}.drop{font-size:44px}.hero h1{margin:5px 0 3px;font-size:32px}.hero p{margin:0;color:var(--muted)}
+.card{background:var(--white);border:1px solid #deedf7;border-radius:24px;padding:20px;box-shadow:0 16px 42px #0b294312;margin:14px 0}
+.section-title{font-size:18px;font-weight:900;margin-bottom:4px}.hint{font-size:13px;color:var(--muted);line-height:1.45}
+.model{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0}
+.model>div{background:var(--aqua);border-radius:15px;padding:13px}.model b{color:var(--blue);display:block;margin-bottom:5px}
+.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.group{margin-top:13px}label{font-weight:800;display:block;margin-bottom:6px}
+.field{display:flex;align-items:center;gap:8px}
+input,select{width:100%;border:1px solid #cbdbe7;border-radius:13px;padding:13px 14px;font:inherit;background:#fff;color:var(--navy);outline:none}
+input:focus,select:focus{border-color:var(--blue);box-shadow:0 0 0 3px #0586c91a}
+.unit{min-width:55px;color:var(--muted);font-weight:700}
+.check{display:flex;gap:10px;align-items:flex-start;background:#f8fbfd;border:1px solid #e4eef4;border-radius:13px;padding:12px;margin-top:9px}
+.check input{width:18px;height:18px;margin-top:1px}
+.check label{margin:0;font-weight:700}.check small{display:block;color:var(--muted);font-weight:400;margin-top:3px;line-height:1.35}
+button{width:100%;margin-top:18px;padding:15px 18px;border:0;border-radius:14px;background:linear-gradient(90deg,#067eb8,#0ea5e9);color:#fff;font-size:17px;font-weight:900;cursor:pointer}
+.result{display:none;margin-top:18px;border-radius:18px;background:#edfaff;border:1px solid #cbeaf8;padding:18px;text-align:center}
+.big{font-size:36px;line-height:1.15;font-weight:950;color:#0577ae;margin-top:5px}.sub{color:var(--muted);margin-top:5px}
+.breakdown{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:14px}.mini{background:#fff;border:1px solid #d5e9f4;border-radius:13px;padding:11px;font-size:13px}.mini b{display:block;color:var(--blue);margin-bottom:4px}.mini strong{font-size:16px}
+.advice{text-align:left;margin-top:12px;background:#fff;border-radius:13px;padding:12px 14px;border:1px solid #d5e9f4;font-size:13.5px;line-height:1.55}
+.note,.warn{font-size:12.5px;line-height:1.5;margin-top:12px;border-radius:12px;padding:11px 12px}.note{background:#f7fafc;color:var(--muted)}.warn{background:#fff7ed;color:#9a3412}
+footer{text-align:center;color:#6b7f90;font-size:12px;margin-top:18px}
+@media(max-width:620px){.formgrid,.model,.breakdown{grid-template-columns:1fr}.hero h1{font-size:27px}.big{font-size:31px}}
 </style>
 </head>
 <body>
@@ -24,42 +38,85 @@ footer{text-align:center;color:#64748b;font-size:12px;margin-top:20px}
   <div class="hero">
     <div class="drop">💧</div>
     <h1>Smart Hydration</h1>
-    <p>Nền • Cộng • Chỉnh — tính nhanh lượng nước tham khảo trong ngày</p>
+    <p>Tính theo mô hình <b>Nền • Cộng • Chỉnh</b></p>
   </div>
 
   <div class="card">
-    <label for="w">Cân nặng của bạn</label>
-    <div class="field"><input id="w" type="number" min="35" max="120" step="0.1" placeholder="Ví dụ: 55"><span class="unit">kg</span></div>
+    <div class="section-title">Mô hình “Nền - Cộng - Chỉnh”</div>
+    <div class="model">
+      <div><b>1. NỀN</b>≈ 30 mL × cân nặng (kg)</div>
+      <div><b>2. CỘNG</b>+300 mL mỗi 30 phút tập vừa–nặng; đi bộ nhẹ +0–150 mL (ước tính)</div>
+      <div><b>3. CHỈNH</b>Nhìn màu nước tiểu giữa ngày; vàng đậm thì thêm 1–2 ly 250 mL</div>
+    </div>
 
-    <label for="m">Vận động vừa–nặng hôm nay</label>
-    <div class="field"><input id="m" type="number" min="0" max="240" step="5" placeholder="Ví dụ: 30"><span class="unit">phút</span></div>
+    <div class="section-title">Thông tin của bạn</div>
+    <div class="hint">Nhập đủ các yếu tố bên dưới để công cụ phản ánh đúng mô hình của nhóm.</div>
 
-    <button onclick="calc()">TÍNH CHO TÔI</button>
+    <div class="formgrid">
+      <div class="group">
+        <label for="w">Cân nặng</label>
+        <div class="field"><input id="w" type="number" min="35" max="120" step="0.1" placeholder="Ví dụ: 55"><span class="unit">kg</span></div>
+      </div>
+      <div class="group">
+        <label for="m">Tập vừa–nặng</label>
+        <div class="field"><input id="m" type="number" min="0" max="240" step="5" value="0"><span class="unit">phút</span></div>
+      </div>
+    </div>
+
+    <div class="check">
+      <input id="walk" type="checkbox">
+      <label for="walk">Hôm nay có đi bộ nhẹ
+        <small>Mô hình cho phép cộng thêm khoảng 0–150 mL; công cụ sẽ hiển thị dưới dạng khoảng.</small>
+      </label>
+    </div>
+
+    <div class="group">
+      <label for="urine">Màu nước tiểu giữa ngày</label>
+      <select id="urine">
+        <option value="straw">Vàng nhạt như rơm — giữ nguyên</option>
+        <option value="clear">Gần như trong — có thể uống dư, cân nhắc bớt</option>
+        <option value="dark">Vàng đậm / hổ phách — thêm 1–2 ly 250 mL</option>
+      </select>
+    </div>
+
+    <div class="check">
+      <input id="hot" type="checkbox">
+      <label for="hot">Ngày nóng hoặc ra nhiều mồ hôi
+        <small>Mô hình khuyên tăng thêm, nhưng không quy định một con số cố định.</small>
+      </label>
+    </div>
+
+    <div class="group">
+      <label for="coffee">Cà phê / trà / trà sữa hôm nay</label>
+      <div class="field"><input id="coffee" type="number" min="0" max="10" step="1" value="0"><span class="unit">ly</span></div>
+      <div class="hint">Các đồ uống này vẫn tính vào tổng lượng nước nạp; nhóm dùng quy tắc xen kẽ 1 ly nước lọc 250 mL sau mỗi ly.</div>
+    </div>
+
+    <button onclick="calc()">TÍNH MỤC TIÊU HÔM NAY</button>
 
     <div class="result" id="r">
-      <div>Mục tiêu tham khảo hôm nay</div>
+      <div>Mức đồ uống tham khảo hôm nay</div>
       <div class="big" id="total"></div>
       <div class="sub" id="cups"></div>
-      <div class="grid">
-        <div class="mini">NỀN<b id="base"></b></div>
-        <div class="mini">CỘNG<b id="add"></b></div>
+
+      <div class="breakdown">
+        <div class="mini"><b>NỀN</b><strong id="base"></strong></div>
+        <div class="mini"><b>CỘNG</b><strong id="add"></strong></div>
+        <div class="mini"><b>CHỈNH</b><strong id="adjust"></strong></div>
       </div>
-      <div class="flow">
-        <div class="step"><b>NỀN</b>30 mL × cân nặng</div>
-        <div class="step"><b>CỘNG</b>+300 mL / 30 phút vận động</div>
-        <div class="step"><b>CHỈNH</b>Theo vận động, thời tiết và tín hiệu cơ thể</div>
-      </div>
+
+      <div class="advice" id="advice"></div>
     </div>
 
     <div class="note">
-      Công thức của nhóm: mức nền ≈ 30 mL × cân nặng (kg); cộng khoảng 300 mL cho mỗi 30 phút vận động vừa–nặng.
-      Nếu số phút không tròn 30, công cụ nội suy tuyến tính để đưa ra mức tham khảo.
+      Ví dụ theo mô hình: sinh viên 55 kg, tập 30 phút → Nền 1.650 mL + Cộng 300 mL = khoảng 1.950 mL trước bước Chỉnh.
     </div>
     <div class="warn">
-      Đây là công cụ tham khảo cho người khỏe mạnh, không thay thế tư vấn y khoa. Không ép uống quá nhiều trong thời gian ngắn. Người có bệnh thận, tim hoặc đang dùng thuốc nên theo hướng dẫn của bác sĩ.
+      Mức trên chỉ mang tính tham khảo cho người khỏe mạnh. Không ép uống quá nhiều trong thời gian ngắn. Người có bệnh thận, tim hoặc đang dùng thuốc cần theo hướng dẫn của bác sĩ.
     </div>
   </div>
-  <footer>Uống Nước Thông Minh • Giải pháp nhỏ cho đời sống sinh viên</footer>
+
+  <footer>Uống Nước Thông Minh • Nền – Cộng – Chỉnh</footer>
 </div>
 
 <script>
@@ -67,12 +124,65 @@ function fmt(n){return Math.round(n).toLocaleString('vi-VN')+' mL'}
 function calc(){
   const w=parseFloat(document.getElementById('w').value);
   const m=parseFloat(document.getElementById('m').value||0);
-  if(!w||w<35||w>120||m<0||m>240){alert('Vui lòng nhập cân nặng 35–120 kg và thời gian vận động 0–240 phút.');return}
-  const base=30*w, add=300*(m/30), total=base+add;
+  const walk=document.getElementById('walk').checked;
+  const urine=document.getElementById('urine').value;
+  const hot=document.getElementById('hot').checked;
+  const coffee=parseInt(document.getElementById('coffee').value||0,10);
+
+  if(!w || w<35 || w>120 || m<0 || m>240 || coffee<0 || coffee>10){
+    alert('Vui lòng kiểm tra lại thông tin đã nhập.');
+    return;
+  }
+
+  const base=30*w;
+  const exercise=300*(m/30);
+
+  let low=base+exercise;
+  let high=base+exercise;
+  let addText=fmt(exercise);
+  if(walk){
+    high+=150;
+    addText=fmt(exercise)+' đến '+fmt(exercise+150);
+  }
+
+  let adjustText='Giữ nguyên';
+  let urineAdvice='';
+  if(urine==='dark'){
+    low+=250; high+=500;
+    adjustText='+250–500 mL';
+    urineAdvice='• Nước tiểu vàng đậm/hổ phách: mô hình gợi ý thêm 1–2 ly 250 mL.';
+  }else if(urine==='clear'){
+    adjustText='Cân nhắc bớt';
+    urineAdvice='• Nước tiểu gần như trong: có thể đang uống dư; không tự động cộng thêm.';
+  }else{
+    urineAdvice='• Nước tiểu vàng nhạt như rơm: giữ nguyên mức hiện tại.';
+  }
+
+  let totalText;
+  if(Math.round(low)===Math.round(high)){
+    totalText=fmt(low);
+  }else{
+    totalText=fmt(low)+' – '+fmt(high);
+  }
+
+  const cupsLow=low/250, cupsHigh=high/250;
+  const bottleLow=low/500, bottleHigh=high/500;
+  const range=(a,b)=>Math.abs(a-b)<0.05
+    ? a.toFixed(1).replace('.',',')
+    : a.toFixed(1).replace('.',',')+'–'+b.toFixed(1).replace('.',',');
+
+  document.getElementById('total').textContent=totalText;
+  document.getElementById('cups').textContent='≈ '+range(cupsLow,cupsHigh)+' ly 250 mL • ≈ '+range(bottleLow,bottleHigh)+' bình 500 mL';
   document.getElementById('base').textContent=fmt(base);
-  document.getElementById('add').textContent='+'+fmt(add);
-  document.getElementById('total').textContent=fmt(total);
-  document.getElementById('cups').textContent='≈ '+(total/250).toFixed(1).replace('.',',')+' ly 250 mL • ≈ '+(total/500).toFixed(1).replace('.',',')+' bình 500 mL';
+  document.getElementById('add').textContent=addText;
+  document.getElementById('adjust').textContent=adjustText;
+
+  let tips=urineAdvice;
+  if(walk) tips+='\n• Có đi bộ nhẹ: khoảng mục tiêu đã cho phép thêm tối đa 150 mL.';
+  if(hot) tips+='\n• Ngày nóng/ra nhiều mồ hôi: nên tăng thêm theo thực tế; mô hình chưa ấn định một lượng cố định.';
+  if(coffee>0) tips+='\n• '+coffee+' ly cà phê/trà/trà sữa vẫn tính vào tổng nước nạp; áp dụng quy tắc xen kẽ '+coffee+' ly nước lọc 250 mL.';
+  document.getElementById('advice').textContent=tips;
+
   document.getElementById('r').style.display='block';
   document.getElementById('r').scrollIntoView({behavior:'smooth',block:'nearest'});
 }
