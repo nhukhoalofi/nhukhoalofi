@@ -22,6 +22,14 @@ input:focus,select:focus{border-color:var(--blue);box-shadow:0 0 0 3px #0586c91a
 .unit{min-width:55px;color:var(--muted);font-weight:700}
 .check{display:flex;gap:10px;align-items:flex-start;background:#f8fbfd;border:1px solid #e4eef4;border-radius:13px;padding:12px;margin-top:9px}
 .check input{width:18px;height:18px;margin-top:1px}
+.urine-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:8px}
+.urine-option{position:relative}
+.urine-option input{position:absolute;opacity:0;pointer-events:none}
+.urine-option label{display:block;margin:0;border:2px solid #dbe8f1;border-radius:14px;padding:12px 9px;text-align:center;cursor:pointer;background:#fff;font-size:13px}
+.urine-option input:checked+label{border-color:var(--blue);box-shadow:0 0 0 3px #0586c91a;background:#f3fbff}
+.swatch{width:34px;height:34px;border-radius:50%;margin:0 auto 7px;border:1px solid #d7d7d7}
+.swatch.clear{background:#f8fbff}.swatch.straw{background:#f4dc74}.swatch.dark{background:#c88922}
+.height-note{font-size:12px;color:var(--muted);margin-top:5px}
 .check label{margin:0;font-weight:700}.check small{display:block;color:var(--muted);font-weight:400;margin-top:3px;line-height:1.35}
 button{width:100%;margin-top:18px;padding:15px 18px;border:0;border-radius:14px;background:linear-gradient(90deg,#067eb8,#0ea5e9);color:#fff;font-size:17px;font-weight:900;cursor:pointer}
 .result{display:none;margin-top:18px;border-radius:18px;background:#edfaff;border:1px solid #cbeaf8;padding:18px;text-align:center}
@@ -30,7 +38,7 @@ button{width:100%;margin-top:18px;padding:15px 18px;border:0;border-radius:14px;
 .advice{text-align:left;margin-top:12px;background:#fff;border-radius:13px;padding:12px 14px;border:1px solid #d5e9f4;font-size:13.5px;line-height:1.55}
 .note,.warn{font-size:12.5px;line-height:1.5;margin-top:12px;border-radius:12px;padding:11px 12px}.note{background:#f7fafc;color:var(--muted)}.warn{background:#fff7ed;color:#9a3412}
 footer{text-align:center;color:#6b7f90;font-size:12px;margin-top:18px}
-@media(max-width:620px){.formgrid,.model,.breakdown{grid-template-columns:1fr}.hero h1{font-size:27px}.big{font-size:31px}}
+@media(max-width:620px){.formgrid,.model,.breakdown,.urine-grid{grid-template-columns:1fr}.hero h1{font-size:27px}.big{font-size:31px}}
 </style>
 </head>
 <body>
@@ -58,6 +66,11 @@ footer{text-align:center;color:#6b7f90;font-size:12px;margin-top:18px}
         <div class="field"><input id="w" type="number" min="35" max="120" step="0.1" placeholder="Ví dụ: 55"><span class="unit">kg</span></div>
       </div>
       <div class="group">
+        <label for="h">Chiều cao</label>
+        <div class="field"><input id="h" type="number" min="130" max="220" step="1" placeholder="Ví dụ: 165"><span class="unit">cm</span></div>
+        <div class="height-note">Dùng để hiển thị BMI tham khảo; không đưa vào công thức nước hiện tại.</div>
+      </div>
+      <div class="group">
         <label for="m">Tập vừa–nặng</label>
         <div class="field"><input id="m" type="number" min="0" max="240" step="5" value="0"><span class="unit">phút</span></div>
       </div>
@@ -71,12 +84,21 @@ footer{text-align:center;color:#6b7f90;font-size:12px;margin-top:18px}
     </div>
 
     <div class="group">
-      <label for="urine">Màu nước tiểu giữa ngày</label>
-      <select id="urine">
-        <option value="straw">Vàng nhạt như rơm — giữ nguyên</option>
-        <option value="clear">Gần như trong — có thể uống dư, cân nhắc bớt</option>
-        <option value="dark">Vàng đậm / hổ phách — thêm 1–2 ly 250 mL</option>
-      </select>
+      <label>Màu nước tiểu giữa ngày</label>
+      <div class="urine-grid">
+        <div class="urine-option">
+          <input type="radio" name="urine" id="u-clear" value="clear">
+          <label for="u-clear"><div class="swatch clear"></div>Gần như trong<br><span class="hint">Có thể uống dư</span></label>
+        </div>
+        <div class="urine-option">
+          <input type="radio" name="urine" id="u-straw" value="straw" checked>
+          <label for="u-straw"><div class="swatch straw"></div>Vàng nhạt<br><span class="hint">Giữ nguyên</span></label>
+        </div>
+        <div class="urine-option">
+          <input type="radio" name="urine" id="u-dark" value="dark">
+          <label for="u-dark"><div class="swatch dark"></div>Vàng đậm<br><span class="hint">Thêm 1–2 ly</span></label>
+        </div>
+      </div>
     </div>
 
     <div class="check">
@@ -104,6 +126,7 @@ footer{text-align:center;color:#6b7f90;font-size:12px;margin-top:18px}
         <div class="mini"><b>CỘNG</b><strong id="add"></strong></div>
         <div class="mini"><b>CHỈNH</b><strong id="adjust"></strong></div>
       </div>
+      <div class="mini" style="margin-top:9px"><b>THỂ TRẠNG THAM KHẢO</b><strong id="bmi"></strong><div class="hint">BMI chỉ để tham khảo, không dùng để cộng/trừ lượng nước trong mô hình hiện tại.</div></div>
 
       <div class="advice" id="advice"></div>
     </div>
@@ -123,13 +146,14 @@ footer{text-align:center;color:#6b7f90;font-size:12px;margin-top:18px}
 function fmt(n){return Math.round(n).toLocaleString('vi-VN')+' mL'}
 function calc(){
   const w=parseFloat(document.getElementById('w').value);
+  const h=parseFloat(document.getElementById('h').value);
   const m=parseFloat(document.getElementById('m').value||0);
   const walk=document.getElementById('walk').checked;
-  const urine=document.getElementById('urine').value;
+  const urine=document.querySelector('input[name="urine"]:checked').value;
   const hot=document.getElementById('hot').checked;
   const coffee=parseInt(document.getElementById('coffee').value||0,10);
 
-  if(!w || w<35 || w>120 || m<0 || m>240 || coffee<0 || coffee>10){
+  if(!w || w<35 || w>120 || !h || h<130 || h>220 || m<0 || m>240 || coffee<0 || coffee>10){
     alert('Vui lòng kiểm tra lại thông tin đã nhập.');
     return;
   }
@@ -176,6 +200,8 @@ function calc(){
   document.getElementById('base').textContent=fmt(base);
   document.getElementById('add').textContent=addText;
   document.getElementById('adjust').textContent=adjustText;
+  const bmi=w/Math.pow(h/100,2);
+  document.getElementById('bmi').textContent='BMI ≈ '+bmi.toFixed(1).replace('.',',');
 
   let tips=urineAdvice;
   if(walk) tips+='\n• Có đi bộ nhẹ: khoảng mục tiêu đã cho phép thêm tối đa 150 mL.';
